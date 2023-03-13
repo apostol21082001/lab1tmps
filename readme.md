@@ -6,6 +6,51 @@ SOLID este un set de cinci principii de proiectare orientate pe obiecte menite s
 
 Codul meu se bazează pe un exemplu simplu de implementare a unui serviciu de gestionare a produselor, care respectă cele 5 principii SOLID.Proiectul meu a fost scris in C#.
 
+Interfata IProductService:
+Aceasta este o interfata care defineste contractul pentru orice serviciu care se ocupa de produse. Contine trei metode:
+
+    AddProduct(Product product) - adauga un produs nou in lista de produse.
+    RemoveProduct(int productId) - sterge un produs din lista de produse, pe baza ID-ului.
+    GetAllProducts() - returneaza toate produsele din lista.
+    
+Clasa Product:
+Aceasta este clasa care reprezinta un produs. Are trei proprietati:
+
+    Id - ID-ul unic al produsului.
+    Name - numele produsului.
+    Price - pretul produsului.
+    
+Clasa ProductService:
+Aceasta este clasa care implementeaza interfata IProductService. Contine o lista de produse si implementeaza cele trei metode din interfata:
+
+    AddProduct(Product product) - adauga un produs nou in lista de produse. Atribuie un ID unic produsului si apoi il adauga in lista.
+    RemoveProduct(int productId) - sterge un produs din lista de produse, pe baza ID-ului. Găsește produsul după ID și il sterge din lista. Apoi re-numere produsele rămase în listă, pentru a asigura ca toate ID-urile sunt unice si consecutive.
+    GetAllProducts() - returneaza toate produsele din lista.
+
+Despre clasa Program:
+
+    Aceasta este clasa principală a aplicației noastre, care gestionează interacțiunea cu utilizatorul prin intermediul consolei.
+    În metodă statică Main, se creează o instanță a serviciului de produse (ProductService) și se afișează un meniu de opțiuni pentru utilizator.
+    În funcție de opțiunea aleasă de utilizator, se apelează metodele corespunzătoare din serviciul de produse pentru a adăuga, elimina sau afișa produsele.
+    Metoda AddProduct solicită numele și prețul produsului de la utilizator prin intermediul consolei, creează o instanță a clasei Product și o adaugă în lista de produse prin apelarea metodei AddProduct din serviciul de produse.
+    Metoda RemoveProduct solicită utilizatorului ID-ul produsului de eliminat, apoi apelează metoda RemoveProduct din serviciul de produse pentru a elimina produsul corespunzător.
+    Metoda GetAllProducts apelează metoda GetAllProducts din serviciul de produse pentru a returna o listă de toate produsele și le afișează în consolă.
+
+Dupa realizarea proiectului se pare ca se respecte principiile SOLID:
+
+    Principiul responsabilității unice (SRP): Fiecare clasă și interfață din codul tău are o singură responsabilitate și îndeplinește un singur rol specific în cadrul aplicației.
+
+    Principiul deschis-închis (OCP): Interfața IProductService și clasa ProductService sunt deschise pentru extindere, dar închise pentru modificare, deoarece pot fi extinse prin adăugarea de metode suplimentare sau modificarea comportamentului existent prin moștenire sau implementare, fără a modifica codul existent.
+
+    Principiul substituției Liskov (LSP): Clasa ProductService poate fi folosită ca substitut pentru interfața IProductService fără a afecta comportamentul aplicației.
+
+    Principiul segregării interfețelor (ISP): Interfața IProductService este specifică și conține numai metodele necesare pentru a gestiona produsele, iar clasa ProductService implementează aceste metode în mod corespunzător.
+
+    Principiul inversiunii dependențelor (DIP): Clasa Program depinde de interfața IProductService în loc de clasa ProductService, ceea ce face posibilă înlocuirea implementării ProductService cu o altă implementare fără a afecta comportamentul aplicației.
+
+În general, codul pare să fie bine structurat și organizat, iar utilizarea interfeței IProductService face ca implementarea să fie flexibilă și extensibilă.
+
+O mica  explicatie pentru fiecare principiu in parte cu mici secvente de cod sau adaugari care putea fi posibile:
 1.	Single Responsibility Principle (SRP)
 Clasa Product reprezintă o entitate a produselor și are o singură responsabilitate, aceea de a stoca informații despre un produs.
 
@@ -33,10 +78,8 @@ public class Product
 
 Clasa ProductService are responsabilitatea de a gestiona operațiile CRUD (Create, Read, Update, Delete) pentru produse. 
 Acest principiu este respectat prin utilizarea interfețelor. Interfețele sunt deschise pentru extensie, ceea ce înseamnă că putem crea noi implementări ale interfeței fără a modifica codul existent. De exemplu, putem adăuga o nouă clasă care implementează interfața IProductRepository pentru a stoca informațiile într-un alt tip de bază de date.
+
 public interface IProductService.
-
-
-
 {
 
     void Add(Product product);
