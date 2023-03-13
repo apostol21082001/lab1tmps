@@ -36,7 +36,7 @@ Despre clasa Program:
     Metoda RemoveProduct solicită utilizatorului ID-ul produsului de eliminat, apoi apelează metoda RemoveProduct din serviciul de produse pentru a elimina produsul corespunzător.
     Metoda GetAllProducts apelează metoda GetAllProducts din serviciul de produse pentru a returna o listă de toate produsele și le afișează în consolă.
 
-Dupa realizarea proiectului se pare ca se respecte principiile SOLID:
+In urma realizarii acestui proiect se respect principiile SOLID:
 
     Principiul responsabilității unice (SRP): Fiecare clasă și interfață din codul tău are o singură responsabilitate și îndeplinește un singur rol specific în cadrul aplicației.
 
@@ -48,7 +48,7 @@ Dupa realizarea proiectului se pare ca se respecte principiile SOLID:
 
     Principiul inversiunii dependențelor (DIP): Clasa Program depinde de interfața IProductService în loc de clasa ProductService, ceea ce face posibilă înlocuirea implementării ProductService cu o altă implementare fără a afecta comportamentul aplicației.
 
-În general, codul pare să fie bine structurat și organizat, iar utilizarea interfeței IProductService face ca implementarea să fie flexibilă și extensibilă.
+Utilizarea interfeței IProductService face ca implementarea să fie flexibilă și extensibilă.
 
 O mica  explicatie pentru fiecare principiu in parte cu mici secvente de cod sau adaugari care putea fi posibile:
 1.	Single Responsibility Principle (SRP)
