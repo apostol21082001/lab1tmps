@@ -27,45 +27,7 @@ public class Product
     public decimal Price { get; set; }
 }
 
-Clasa ProductRepository are responsabilitatea de a gestiona operațiile de stocare și preluare a produselor din/spre o sursă de date (de exemplu, o bază de date).
 
-public class ProductRepository : IProductRepository
-
-{
-
-    private readonly List<Product> _products = new List<Product>();
-
-    public void Add(Product product)
-    {
-        _products.Add(product);
-    }
-
-    public void Delete(Product product)
-    {
-        _products.Remove(product);
-    }
-
-    public IEnumerable<Product> GetAll()
-    {
-        return _products;
-    }
-
-    public Product GetById(int id)
-    {
-        return _products.FirstOrDefault(p => p.Id == id);
-    }
-
-    public void Update(Product product)
-    {
-        var existingProduct = GetById(product.Id);
-        if (existingProduct != null)
-        {
-            existingProduct.Name = product.Name;
-            existingProduct.Description = product.Description;
-            existingProduct.Price = product.Price;
-        }
-    }
-}
 
 2.	Open/Closed Principle (OCP)
 
